@@ -1,0 +1,67 @@
+﻿@model IEnumerable<All_In_One.Models.Teacher>
+
+@{
+    ViewData["Title"] = "TeacherList";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="container">
+    <div class="row">
+        <div class="col-8">
+            <h2>Teacher List</h2>
+        </div>
+        <div class="col-4">
+            <a asp-action="Create" class="btn btn-primary text-white float-right">Create New Teacher</a>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col">
+            <table class="table table-striped border">
+                <thead>
+                    <tr>
+                        <th>
+                            @*<label asp-for="TeacherName"></label>*@
+                            @Html.DisplayNameFor(model => model.TeacherName)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(x => x.SubjectOfTeacher)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(x => x.TeacherMail)
+                        </th>
+                        <th>
+                            Oparetion
+                        </th>
+                    </tr>
+                </thead>
+
+                <tbody>
+                    @foreach(var item in Model)
+                    {
+                    <tr>
+                        <td>
+                            @Html.DisplayFor(x => item.TeacherName)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(x => item.SubjectOfTeacher)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(x => item.TeacherMail)
+                        </td>
+
+                        <th>
+                            @Html.ActionLink("Edit", "Edit", new { id = item.TeacherId, item.TeacherName, item.SubjectOfTeacher, item.TeacherMail}, new { @class = "btn btn-success" }) |
+                            @Html.ActionLink("Delete", "Delete", new { id = item.TeacherId }, new { @class = "btn btn-danger", onclick = "return confirm(''Do you want to delete')" })
+                        </th>
+                    </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+
+
+</div>
+

@@ -12,7 +12,7 @@ namespace All_In_One.Models
         [Key]
         public int TeacherId { get; set; }
 
-        [Display(Name = "Techar Name")]
+        [Display(Name = "Teacher Name")]
         [Required(ErrorMessage = "Please Enter Teacher Name")]
         [MaxLength(150)]
         public string TeacherName { get; set; }
