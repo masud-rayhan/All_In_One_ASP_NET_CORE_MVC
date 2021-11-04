@@ -9,45 +9,38 @@ using System.Threading.Tasks;
 namespace All_In_One.Areas.Admin.Controllers
 {
     [Area("Admin")]
-    public class TeacherController : Controller
+    public class DepartmentController : Controller
     {
         private readonly IUnitOfWork _unitOfWork;
 
-        public TeacherController(IUnitOfWork unitOfWork)
+        public DepartmentController(IUnitOfWork unitOfWork)
         {
             _unitOfWork = unitOfWork;
         }
 
 
-
-        public IActionResult TeacherList()
+        public IActionResult DepartmentList()
         {
-            var teacher = _unitOfWork.Teacher.GetAll();
-            return View(teacher);
+            var deptList = _unitOfWork.Department.GetAll();
+            return View(deptList);
         }
 
         public IActionResult Create()
         {
-
             return View();
         }
 
-
-
-
         [HttpPost]
         [ValidateAntiForgeryToken]
-
-        public IActionResult Create(Teacher teacher)
+        public IActionResult Create(Department department)
         {
             if (ModelState.IsValid)
             {
-                 _unitOfWork.Teacher.Add(teacher);
+                _unitOfWork.Department.Add(department);
                 _unitOfWork.Save();
-                return RedirectToAction(nameof(TeacherList));
             }
 
-            return View(teacher);
+            return RedirectToAction(nameof(DepartmentList));
         }
 
 
@@ -57,59 +50,52 @@ namespace All_In_One.Areas.Admin.Controllers
             {
                 return BadRequest();
             }
+            var department = _unitOfWork.Department.Get(id);
 
-            var teacher = _unitOfWork.Teacher.Get(id);
-
-            if (teacher == null)
+            if (department == null)
             {
                 return NotFound();
             }
 
-            return View(teacher);
+            return View(department);
         }
 
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-
-        public IActionResult Edit(Teacher teacher)
+        public IActionResult Edit(Department department)
         {
             if (ModelState.IsValid)
             {
-                _unitOfWork.Teacher.Update(teacher);
-                //_unitOfWork.Save();
+                _unitOfWork.Department.Update(department);
             }
 
-            return RedirectToAction(nameof(TeacherList));
+            return RedirectToAction(nameof(DepartmentList));
         }
-
-
 
         public IActionResult Delete(int id)
         {
-            if(id== null || id <= 0)
+            if (id == null || id <= 0)
             {
                 return BadRequest();
             }
-            var teacher = _unitOfWork.Teacher.Get(id);
+            var department = _unitOfWork.Department.Get(id);
 
-            if (teacher == null)
+            if (department == null)
             {
                 return NotFound();
             }
 
-            _unitOfWork.Teacher.Remove(teacher);
+            _unitOfWork.Department.Remove(department);
             _unitOfWork.Save();
 
-            return RedirectToAction(nameof(TeacherList));
+            return RedirectToAction(nameof(DepartmentList));
         }
+
 
 
 
 
 
     }
-
-
-    
 }

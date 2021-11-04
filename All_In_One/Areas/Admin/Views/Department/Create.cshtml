@@ -1,5 +1,4 @@
-﻿@model All_In_One.Models.Teacher
-
+﻿@model All_In_One.Models.Department
 @{
     ViewData["Title"] = "Create";
     Layout = "~/Views/Shared/_Layout.cshtml";
@@ -8,7 +7,7 @@
 <div class="container">
     <div class="row">
         <div class="col-8">
-            <h2>Create New Teacher</h2>
+            <h2>Create New Department</h2>
         </div>
         <div class="col-4">
 
@@ -22,19 +21,19 @@
             <form asp-action="Create">
                 <div asp-validation-summary="ModelOnly" class="text-danger"></div>
                 <div class="form-group">
-                    <label asp-for="TeacherName" class="control-label"></label>
-                    <input asp-for="TeacherName" class="form-control" />
-                    <span asp-validation-for="TeacherName" class="text-danger"></span>
+                    <label asp-for="DepartmentName" class="control-label"></label>
+                    <input asp-for="DepartmentName" class="form-control" />
+                    <span asp-validation-for="DepartmentName" class="text-danger"></span>
                 </div>
                 <div class="form-group">
-                    <label asp-for="SubjectOfTeacher" class="control-label"></label>
-                    <input asp-for="SubjectOfTeacher" class="form-control" />
-                    <span asp-validation-for="SubjectOfTeacher" class="text-danger"></span>
+                    <label asp-for="DepartmentChairman" class="control-label"></label>
+                    <input asp-for="DepartmentChairman" class="form-control" />
+                    <span asp-validation-for="DepartmentChairman" class="text-danger"></span>
                 </div>
                 <div class="form-group">
-                    <label asp-for="TeacherMail" class="control-label"></label>
-                    <input asp-for="TeacherMail" class="form-control" />
-                    <span asp-validation-for="TeacherMail" class="text-danger"></span>
+                    <label asp-for="DepartmentAddress" class="control-label"></label>
+                    <input asp-for="DepartmentAddress" class="form-control" />
+                    <span asp-validation-for="DepartmentAddress" class="text-danger"></span>
                 </div>
                 <div class="form-group">
                     <div class="row">
@@ -43,7 +42,7 @@
                         </div>
 
                         <div class="col-6">
-                            <a asp-action="TeacherList" class="btn btn-success form-control">Teacher List</a>
+                            <a asp-action="DepartmentList" class="btn btn-success form-control">Department List</a>
                         </div>
                     </div>
                 </div>
@@ -56,3 +55,4 @@
 @section Scripts {
     @{await Html.RenderPartialAsync("~/Views/Shared/_ValidationScriptsPartial.cshtml");}
 }
+

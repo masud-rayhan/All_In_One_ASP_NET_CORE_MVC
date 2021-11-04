@@ -21,14 +21,18 @@
                 <thead>
                     <tr>
                         <th>
-                            @*<label asp-for="TeacherName"></label>*@
+
                             @Html.DisplayNameFor(model => model.TeacherName)
+                            @*<label asp-for="TeacherName" class="control-label"></label>*@
+                            @*not Applicable for IEnumerable*@
                         </th>
                         <th>
                             @Html.DisplayNameFor(x => x.SubjectOfTeacher)
+                            
                         </th>
                         <th>
                             @Html.DisplayNameFor(x => x.TeacherMail)
+                            
                         </th>
                         <th>
                             Oparetion

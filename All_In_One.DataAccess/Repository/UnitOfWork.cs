@@ -13,10 +13,16 @@ namespace All_In_One.DataAccess.Repository
         private readonly ApplicationDbContext _db;
         public ITeacherRepository Teacher { get; private set; }
 
+        public IDepartmentRepository Department { get; private set; }
+
+        public IStudentRepository Student { get; private set; }
+
         public UnitOfWork(ApplicationDbContext db)
         {
             _db = db;
             Teacher = new TeacherRepository(_db);
+            Department = new DepartmentRepository(_db);
+            Student = new StudentRepository(_db);
         }
 
         public void Dispose()

@@ -1,0 +1,65 @@
+﻿@model All_In_One.Models.Department
+@{
+    ViewData["Title"] = "Edit";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="container">
+    <div class="row">
+        <div class="col-8">
+            <h2>Edit Department</h2>
+        </div>
+        <div class="col-4">
+
+        </div>
+    </div>
+
+
+
+    <div class="row">
+        <div class="col-md-7">
+            <form asp-action="Edit">
+                <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+
+                @*@Html.HiddenFor(e => e.DepartmentId)*@
+                <input type="hidden" asp-for="DepartmentId" />
+
+
+                <div class="form-group">
+                    <label asp-for="DepartmentName" class="control-label"></label>
+                    <input asp-for="DepartmentName" class="form-control" />
+                    <span asp-validation-for="DepartmentName" class="text-danger"></span>
+                </div>
+
+
+                <div class="form-group">
+                    <label asp-for="DepartmentChairman" class="control-label"></label>
+                    <input asp-for="DepartmentChairman" class="form-control" />
+                    <span asp-validation-for="DepartmentChairman" class="text-danger"></span>
+                </div>
+
+
+                <div class="form-group">
+                    <label asp-for="DepartmentAddress" class="control-label"></label>
+                    <input asp-for="DepartmentAddress" class="form-control" />
+                    <span asp-validation-for="DepartmentAddress" class="text-danger"></span>
+                </div>
+
+
+                <div class="form-group">
+                    <div class="row">
+                        <div class="col-6">
+                            <input type="submit" value="Save" class="btn btn-primary form-control" />
+                        </div>
+
+                        <div class="col-6">
+                            <a asp-action="DepartmentList" class="btn btn-success form-control">Department List</a>
+                        </div>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+
+</div>
+

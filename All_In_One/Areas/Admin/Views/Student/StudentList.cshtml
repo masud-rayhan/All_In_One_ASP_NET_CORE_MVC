@@ -1,0 +1,77 @@
+﻿@model  IEnumerable<All_In_One.Models.Student>
+@{
+    ViewData["Title"] = "StudentList";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="container">
+    <div class="row">
+        <div class="col-8">
+            <h2>Student List</h2>
+        </div>
+        <div class="col-4">
+            <a asp-action="Create" class="btn btn-primary text-white float-right">Create New Student</a>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col">
+            <table class="table table-striped border">
+                <thead>
+                    <tr>
+                        <th>
+
+                            @Html.DisplayNameFor(model => model.StudentName)
+                            @*<label asp-for="StudentName" class="control-label"></label>*@
+                            @*not Applicable for IEnumerable*@
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(x => x.StudentMail)
+
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(x => x.Department.DepartmentName)
+
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(x => x.Department.DepartmentChairman)
+
+                        </th>
+                        <th>
+                            Oparetion
+                        </th>
+                    </tr>
+                </thead>
+
+                <tbody>
+                    @foreach (var item in Model)
+                    {
+                    <tr>
+                        <td>
+                            @Html.DisplayFor(x => item.StudentName)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(x => item.StudentMail)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(x => item.Department.DepartmentName)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(x => item.Department.DepartmentChairman)
+                        </td>
+
+                        <th>
+                            @Html.ActionLink("Edit", "Edit", new { id = item.StudentId, item.StudentName, item.StudentMail, item.DepartmentId }, new { @class = "btn btn-success" }) |
+                            @Html.ActionLink("Delete", "Delete", new { id = item.StudentId }, new { @class = "btn btn-danger", onclick = "return confirm(''Do you want to delete')" })
+                        </th>
+                    </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+
+
+</div>
+
