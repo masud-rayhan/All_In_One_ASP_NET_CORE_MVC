@@ -17,12 +17,17 @@ namespace All_In_One.DataAccess.Repository
 
         public IStudentRepository Student { get; private set; }
 
+        public IStudentTeacherRepository StudentTeacher { get; private set; }
+
         public UnitOfWork(ApplicationDbContext db)
         {
             _db = db;
             Teacher = new TeacherRepository(_db);
             Department = new DepartmentRepository(_db);
             Student = new StudentRepository(_db);
+            StudentTeacher = new StudentTeacherRepository(_db);
+
+
         }
 
         public void Dispose()

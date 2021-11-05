@@ -1,0 +1,52 @@
+﻿@model All_In_One.Models.StudentTeacher
+@{
+    ViewData["Title"] = "Edit";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="container">
+    <div class="row">
+        <div class=" col-">
+            <h2>Student and Teacher Allocation</h2>
+            <h4>Edit</h4>
+        </div>
+        <br />
+        <br />
+    </div>
+
+    <div class=" row">
+        <div class="col">
+            <form asp-action="Edit">
+                <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                <div class="row">
+                    
+                    <input type="hidden" asp-for="id" />
+
+                    <div class="col-4">
+                        <div class="form-group">
+                            <label asp-for="Student.StudentName" class="control-label"></label>
+                            @*dropdown Menu*@
+                            <select asp-for="StudentId" class="form-control" asp-items="@(new SelectList(ViewBag.StuList,"StudentId","StudentName" ))">
+                            </select>
+
+                        </div>
+                    </div>
+                    <div class="col-4">
+                        <div class="form-group">
+                            <label asp-for="Teacher.TeacherName" class="control-label"></label>
+                            <select asp-for="TeacherId" class="form-control" asp-items="@(new SelectList (ViewBag.TeacherList,"TeacherId","TeacherName"))">
+                            </select>
+                        </div>
+                    </div>
+                    <div class="col-4">
+                        <div class="form-group">
+                            <label class="control-label"></label>
+                            <input type="submit" value="Save" class="btn btn-primary form-control" />
+                        </div>
+                    </div>
+                </div>
+
+            </form>
+        </div>
+    </div>
+</div>

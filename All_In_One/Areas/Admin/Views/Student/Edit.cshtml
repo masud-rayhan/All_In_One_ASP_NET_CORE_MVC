@@ -1,0 +1,57 @@
+﻿@model All_In_One.Models.Student
+
+@{
+    ViewData["Title"] = "Edit";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="container">
+    <div class="row">
+        <div class="col-8">
+            <h2>Edit Teacher</h2>
+        </div>
+        <div class="col-4">
+
+        </div>
+    </div>
+
+
+
+    <div class="row">
+        <div class="col-md-7">
+            <form asp-action="Edit">
+                <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                @*@Html.HiddenFor(e => e.TeacherId)*@
+                <input type="hidden" asp-for="StudentId" />
+                <div class="form-group">
+                    <label asp-for="StudentName" class="control-label"></label>
+                    <input asp-for="StudentName" class="form-control" />
+                    <span asp-validation-for="StudentName" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="StudentMail" class="control-label"></label>
+                    <input asp-for="StudentMail" class="form-control" />
+                    <span asp-validation-for="StudentMail" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="Department.DepartmentName" class="control-label"></label>
+                    @*dropdown Menu*@
+                    <select asp-for="DepartmentId" class="form-control" asp-items="@(new SelectList(ViewBag.DeptList,"DepartmentId","DepartmentName" ))">
+                    </select>
+                </div>
+                <div class="form-group">
+                    <div class="row">
+                        <div class="col-6">
+                            <input type="submit" value="Save" class="btn btn-primary form-control" />
+                        </div>
+
+                        <div class="col-6">
+                            <a asp-action="StudentList" class="btn btn-success form-control">Student List</a>
+                        </div>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+
+</div>

@@ -31,7 +31,7 @@ namespace All_In_One.Models
         public Department Department { get; set; }
 
         //Student to Teacher Many to Many Relation
-        public ICollection<Teacher>Teacher{ get; set; }
+        public ICollection<StudentTeacher> StudentTeacher { get; set; }
         
 
 

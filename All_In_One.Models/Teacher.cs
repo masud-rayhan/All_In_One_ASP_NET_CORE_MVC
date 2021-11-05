@@ -30,6 +30,6 @@ namespace All_In_One.Models
         public string TeacherMail { get; set; }
 
 
-        public ICollection<Student>Student { get; set; }
+        public ICollection<StudentTeacher> StudentTeacher { get; set; }
     }
 }

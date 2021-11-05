@@ -28,6 +28,7 @@ namespace All_In_One.Areas.Admin.Controllers
 
                           select new Student
                           {
+                              StudentId=s.StudentId,
                               StudentName = s.StudentName,
                               StudentMail = s.StudentMail,
                               DepartmentId = s.DepartmentId,
@@ -57,5 +58,94 @@ namespace All_In_One.Areas.Admin.Controllers
         }
 
 
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public IActionResult Create(Student student )
+        {
+            if (ModelState.IsValid)
+            {
+                _unitOfWork.Student.Add(student);
+                _unitOfWork.Save();
+            }
+
+            return RedirectToAction(nameof(StudentList));
+        }
+
+
+
+        public IActionResult Edit(int id)
+        {
+            if (id == null || id <= 0)
+            {
+                return BadRequest();
+            }
+            var student = _unitOfWork.Student.Get(id);
+
+
+
+
+
+            if (student == null)
+            {
+                return NotFound();
+            }
+
+
+
+
+            List<Department> deptList = new List<Department>();
+            deptList = (List<Department>)_unitOfWork.Department.GetAll();
+
+            deptList.Insert(0, new Department { DepartmentId = 0, DepartmentName = student.Department.DepartmentName, DepartmentChairman = "", DepartmentAddress = "" });
+            ViewBag.DeptList = deptList;
+
+
+
+            
+
+            return View(student);
+        }
+
+
+
+
+
+
+
+
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public IActionResult Edit(Student student)
+        {
+            if (ModelState.IsValid)
+            {
+                _unitOfWork.Student.Update(student);
+            }
+
+            return RedirectToAction(nameof(StudentList));
+        }
+
+
+        public IActionResult Delete(int id)
+        {
+            {
+                if (id == null || id <= 0)
+                {
+                    return BadRequest();
+                }
+                var student = _unitOfWork.Student.Get(id);
+
+                if (student == null)
+                {
+                    return NotFound();
+                }
+
+                _unitOfWork.Student.Remove(student);
+                _unitOfWork.Save();
+
+                return RedirectToAction(nameof(StudentList));
+            }
+        }
     }
 }

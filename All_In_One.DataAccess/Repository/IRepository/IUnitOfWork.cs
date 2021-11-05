@@ -11,6 +11,9 @@ namespace All_In_One.DataAccess.Repository.IRepository
         ITeacherRepository Teacher { get; }
         IDepartmentRepository Department { get; }
         IStudentRepository Student { get; }
+        IStudentTeacherRepository StudentTeacher {get;}
+
+        
         void Save();
 
      }

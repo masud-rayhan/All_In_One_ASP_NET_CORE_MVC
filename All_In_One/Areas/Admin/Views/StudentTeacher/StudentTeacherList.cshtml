@@ -1,0 +1,101 @@
+﻿@model IEnumerable<All_In_One.Models.StudentTeacher>
+
+@{
+    ViewData["Title"] = "StudentTeacherList";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+
+<div class="container">
+    <div class="row">
+        <div class="col-8">
+            <h2>Student & Teacher List</h2>
+        </div>
+        <div class="col-4">
+            <a asp-action="Create" class="btn btn-primary text-white float-right">Create New Student Teacher</a>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col">
+            <table class="table table-striped border">
+                <thead>
+                    <tr>
+                        <th>
+                            @Html.DisplayNameFor(model => model.StudentId)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.Student.StudentName)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.TeacherId)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.Teacher.TeacherName)
+                        </th>
+                        <th></th>
+                    </tr>
+                </thead>
+
+                <tbody>
+                    @foreach (var item in Model)
+                    {
+                    <tr>
+                        
+                        <td>
+                            @Html.DisplayFor(modelItem => item.StudentId)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Student.StudentName)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.TeacherId)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Teacher.TeacherName)
+                        </td>
+
+                        <th>
+                            @Html.ActionLink("Edit", "Edit", new { id = item.id}, new { @class = "btn btn-success" }) |
+                            @Html.ActionLink("Delete", "Delete", new { id = item.id }, new { @class = "btn btn-danger", onclick = "return confirm(''Do you want to delete')" })
+                        </th>
+                    </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
