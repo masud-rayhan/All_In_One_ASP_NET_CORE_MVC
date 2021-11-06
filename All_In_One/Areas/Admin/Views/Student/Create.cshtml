@@ -1,4 +1,7 @@
-﻿@model All_In_One.Models.Student
+﻿@*@model All_In_One.Models.Student*@
+
+@model All_In_One.Models.ViewModels.StudentTeacherViewModel
+
 @{
     ViewData["Title"] = "Create";
     Layout = "~/Views/Shared/_Layout.cshtml";
@@ -17,7 +20,7 @@
 
 
     <div class="row">
-        <div class="col-md-7">
+        <div class="col-6">
             <form asp-action="Create">
                 <div asp-validation-summary="ModelOnly" class="text-danger"></div>
                 <div class="form-group">
@@ -51,6 +54,25 @@
                 </div>
             </form>
         </div>
+
+        <div class="col-6">
+            <table>
+                @for(int i = 0; i < Model.AvailableTeacher.Capacity; i++)
+                {
+                    <tr>
+                        <td>
+                            @Html.HiddenFor(x=>Model.AvailableTeacher[i].TeacherId)
+                            @Html.DisplayFor(n => Model.AvailableTeacher[i].TeacherName )
+                        </td>
+                        <td>
+                            @Html.CheckBoxFor(n=> Model.AvailableTeacher[i].IsChecked)
+                        </td>
+
+                    </tr>
+                }
+            </table>
+        </div>
+
     </div>
 
 </div>

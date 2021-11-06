@@ -1,5 +1,6 @@
 ﻿using All_In_One.DataAccess.Repository.IRepository;
 using All_In_One.Models;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using System;
 using System.Collections.Generic;
@@ -9,6 +10,7 @@ using System.Threading.Tasks;
 namespace All_In_One.Areas.Admin.Controllers
 {
     [Area("Admin")]
+    [Authorize]
     public class TeacherController : Controller
     {
         private readonly IUnitOfWork _unitOfWork;
