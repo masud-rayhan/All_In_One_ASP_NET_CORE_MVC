@@ -11,7 +11,11 @@ namespace All_In_One.Models
     public class Student
     {
         [Key]
+        //[DatabaseGenerated(DatabaseGeneratedOption.Identity)]
+        
+       // public Guid Id { get; set; }
         public int StudentId { get; set; }
+        
 
         [Display(Name = "Student Name")]
         [Required(ErrorMessage = "Please Enter Student Name")]

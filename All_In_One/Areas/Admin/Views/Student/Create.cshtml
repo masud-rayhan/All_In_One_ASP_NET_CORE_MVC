@@ -36,11 +36,37 @@
                 <div class="form-group">
                     <label asp-for="Department.DepartmentName" class="control-label"></label>
                     @*dropdown Menu*@
-                    <select asp-for="DepartmentId" class="form-control" asp-items="@(new SelectList(ViewBag.DeptList,"DepartmentId","DepartmentName" ))">          
-
+                    <select asp-for="DepartmentId" class="form-control" asp-items="@(new SelectList(ViewBag.DeptList,"DepartmentId","DepartmentName" ))">
                     </select>
 
                 </div>
+
+
+
+
+                <div class="form-group">
+                    <table>
+                        @for (int i = 0; i < Model.AvailableTeacher.Capacity; i++)
+                        {
+                            <tr>
+                                <td>
+                                    @Html.HiddenFor(x => Model.AvailableTeacher[i].TeacherId)
+                                    @Html.DisplayFor(n => Model.AvailableTeacher[i].TeacherName)
+                                </td>
+                                <td>
+                                    @Html.CheckBoxFor(n => Model.AvailableTeacher[i].IsChecked)
+
+
+                                </td>
+
+                            </tr>
+                        }
+                    </table>
+                </div>
+
+
+
+
                 <div class="form-group">
                     <div class="row">
                         <div class="col-6">
@@ -55,23 +81,27 @@
             </form>
         </div>
 
-        <div class="col-6">
-            <table>
-                @for(int i = 0; i < Model.AvailableTeacher.Capacity; i++)
-                {
-                    <tr>
-                        <td>
-                            @Html.HiddenFor(x=>Model.AvailableTeacher[i].TeacherId)
-                            @Html.DisplayFor(n => Model.AvailableTeacher[i].TeacherName )
-                        </td>
-                        <td>
-                            @Html.CheckBoxFor(n=> Model.AvailableTeacher[i].IsChecked)
-                        </td>
+        @*<div class="col-6">
+            <div class="form-group">
+                <table>
+                    @for (int i = 0; i < Model.AvailableTeacher.Capacity; i++)
+                    {
+                        <tr>
+                            <td>
+                                @Html.HiddenFor(x => Model.AvailableTeacher[i].TeacherId)
+                                @Html.DisplayFor(n => Model.AvailableTeacher[i].TeacherName)
+                            </td>
+                            <td>
+                                @Html.CheckBoxFor(n => Model.AvailableTeacher[i].IsChecked)
 
-                    </tr>
-                }
-            </table>
-        </div>
+
+                            </td>
+
+                        </tr>
+                    }
+                </table>
+            </div>
+        </div>*@
 
     </div>
 

@@ -107,6 +107,7 @@ namespace All_In_One.Areas.Admin.Controllers
                     stc.Add(new StudentTeacher() { StudentId= stdId,TeacherId=item.TeacherId });
                 }
             }
+            //Guid x = new Guid();
 
             foreach(var item in stc)
             {
